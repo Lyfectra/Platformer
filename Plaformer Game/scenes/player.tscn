@@ -482,11 +482,13 @@ size = Vector2(27, 35)
 script = ExtResource("1_o85ey")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 position = Vector2(0, -63)
 sprite_frames = SubResource("SpriteFrames_i5bq7")
-animation = &"Run"
+animation = &"Roll"
 autoplay = "Idle"
-frame_progress = 0.189003
+frame = 3
+frame_progress = 0.444316
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, -17.5)

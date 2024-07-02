@@ -35,16 +35,16 @@ func _physics_process(delta):
 	
 	if is_on_floor():	
 		if direction == 0 and rolling == false:			
-			sprite.play("idle")
+			sprite.play("Idle")
 		elif direction == 0 and rolling == true:			
-			sprite.play("roll")
+			sprite.play("Roll")
 		#moving
 		elif direction != 0 and rolling == false:			
-			sprite.play("run")
+			sprite.play("Run")
 		elif direction !=0 and rolling == true:
-			sprite.play("roll")
+			sprite.play("Roll")
 	else:
-		sprite.play("jumping")
+		sprite.play("Jump")
 		
 	if direction:
 		velocity.x = direction * SPEED
