@@ -4,4 +4,7 @@ extends Area2D
 
 
 func _on_body_entered(body):
-	queue_free()
+	if body.is_in_group("Player"):
+		print("+1 coin")
+		queue_free()
+	
