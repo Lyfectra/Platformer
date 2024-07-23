@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://c1cc0w2nfsm1h"]
+[gd_scene load_steps=2 format=3 uid="uid://c1cc0w2nfsm1h"]
+
+[ext_resource type="Script" path="res://scenes/death_screen.gd" id="1_8g3dh"]
 
 [node name="Death_Screen" type="Node2D"]
+script = ExtResource("1_8g3dh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -58,3 +61,7 @@ offset_right = 37.0
 offset_bottom = 201.0
 grow_horizontal = 2
 text = "You Died!"
+
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/btn_retry" to="." method="_on_btn_retry_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/btn_Main_menu" to="." method="_on_btn_main_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/btn_quit" to="." method="_on_btn_quit_pressed"]
