@@ -9,3 +9,4 @@ func _on_btn_how_to_pressed():
 
 func _on_btn_quit_pressed():
 	get_tree().quit()
+

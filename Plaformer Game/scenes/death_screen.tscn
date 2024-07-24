@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1cc0w2nfsm1h"]
 
-[ext_resource type="Script" path="res://scenes/death_screen.gd" id="1_8g3dh"]
+[ext_resource type="Script" path="res://scripts/death_screen.gd" id="1_8g3dh"]
 
 [node name="Death_Screen" type="Node2D"]
 script = ExtResource("1_8g3dh")
@@ -14,15 +14,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="Death" type="PanelContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,25 +30,25 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -48.0
-offset_top = -50.5
+offset_top = -33.0
 offset_right = 48.0
-offset_bottom = 50.5
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="btn_retry" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Death"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="btn_retry" type="Button" parent="CanvasLayer/Control/Death/VBoxContainer"]
 layout_mode = 2
 text = "Retry
 "
 
-[node name="btn_Main_menu" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="btn_Main_menu" type="Button" parent="CanvasLayer/Control/Death/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu
-"
-
-[node name="btn_quit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
-text = "Quit
 "
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -62,6 +62,5 @@ offset_bottom = 201.0
 grow_horizontal = 2
 text = "You Died!"
 
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/btn_retry" to="." method="_on_btn_retry_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/btn_Main_menu" to="." method="_on_btn_main_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/btn_quit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Death/VBoxContainer/btn_retry" to="." method="_on_btn_retry_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Death/VBoxContainer/btn_Main_menu" to="." method="_on_btn_main_menu_pressed"]
