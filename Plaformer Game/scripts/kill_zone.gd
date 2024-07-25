@@ -1,10 +1,7 @@
 extends Area2D
 
-@onready var timer = $Timer
+@onready var control = $CanvasLayer/Control
 
 func _on_body_entered(body):
-	timer.start()
-
-func _on_timer_timeout():
-	pass
+	control.visible = true
 

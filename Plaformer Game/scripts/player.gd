@@ -8,6 +8,8 @@ var rolling = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $AnimatedSprite2D
+@onready var control = $CanvasLayer/Control
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -51,3 +53,16 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _on_kill_zone_body_entered():
+	print("test")
+	get_tree().create_timer(1.5).timeout
+	control.visible = true
+
+
+func _on_btn_retry_pressed():
+	get_tree().reload_current_scene()
+
+
+func _on_btn_main_menu_pressed():
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

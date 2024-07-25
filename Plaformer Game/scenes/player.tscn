@@ -780,29 +780,3 @@ frame_progress = 0.640313
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, -17.5)
 shape = SubResource("RectangleShape2D_tme8i")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -17.0
-offset_top = -38.0
-offset_right = 23.0
-offset_bottom = 2.0
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 7.0
-offset_right = 39.0
-offset_bottom = 28.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="CanvasLayer/Control/PanelContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="CanvasLayer/Control/PanelContainer/VBoxContainer"]
-layout_mode = 2
