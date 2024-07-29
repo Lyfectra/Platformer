@@ -1,52 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://bq0sxdpl0tscf"]
+[gd_scene load_steps=18 format=3 uid="uid://bq0sxdpl0tscf"]
 
-[ext_resource type="PackedScene" uid="uid://cgm1w4v0d1v75" path="res://scenes/player.tscn" id="1_38y30"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_afyya"]
-[ext_resource type="Script" path="res://scripts/UI.gd" id="2_fs88w"]
-[ext_resource type="Texture2D" uid="uid://drj5et0w2tk1i" path="res://assets/Dungeon Ruins Tileset/Dungeon Ruins Tileset Day.png" id="2_mm8rh"]
-[ext_resource type="PackedScene" uid="uid://byevch6enjkc2" path="res://scenes/Platform.tscn" id="3_p864o"]
-[ext_resource type="PackedScene" uid="uid://6heo7rygpqxf" path="res://scenes/kill_zone.tscn" id="4_04x0h"]
-[ext_resource type="PackedScene" uid="uid://h46eajiea5qw" path="res://scenes/gem.tscn" id="4_e7mxa"]
-[ext_resource type="Texture2D" uid="uid://yypyp36eyyye" path="res://assets/spr_coin_azu.png" id="4_fh730"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lty4v"]
-atlas = ExtResource("4_fh730")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4t63g"]
-atlas = ExtResource("4_fh730")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gu4dr"]
-atlas = ExtResource("4_fh730")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_faa4x"]
-atlas = ExtResource("4_fh730")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xa4tf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lty4v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4t63g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gu4dr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_faa4x")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" path="res://scripts/LevelOne.gd" id="1_nw34w"]
+[ext_resource type="PackedScene" uid="uid://cgm1w4v0d1v75" path="res://scenes/player.tscn" id="2_yo87q"]
+[ext_resource type="PackedScene" uid="uid://cumcodtepo5ob" path="res://scenes/ui.tscn" id="3_4qeaf"]
+[ext_resource type="Texture2D" uid="uid://drj5et0w2tk1i" path="res://assets/Dungeon Ruins Tileset/Dungeon Ruins Tileset Day.png" id="5_7ew0c"]
+[ext_resource type="PackedScene" uid="uid://byevch6enjkc2" path="res://scenes/Platform.tscn" id="6_8o8n8"]
+[ext_resource type="PackedScene" uid="uid://6heo7rygpqxf" path="res://scenes/kill_zone.tscn" id="7_jjl4c"]
+[ext_resource type="PackedScene" uid="uid://g7jyxcp73kd6" path="res://scenes/enemy.tscn" id="8_bqrg2"]
+[ext_resource type="PackedScene" uid="uid://h46eajiea5qw" path="res://scenes/gem.tscn" id="8_okyvo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q6a6"]
-texture = ExtResource("2_mm8rh")
+texture = ExtResource("5_7ew0c")
 18:0/0 = 0
 18:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 18:0/0/physics_layer_0/angular_velocity = 0.0
@@ -882,9 +846,9 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ud85o"]
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_afyya")
+script = ExtResource("1_nw34w")
 
-[node name="Player" parent="." instance=ExtResource("1_38y30")]
+[node name="Player" parent="." instance=ExtResource("2_yo87q")]
 position = Vector2(181, 332)
 scale = Vector2(0.64, 0.64)
 
@@ -894,92 +858,7 @@ scale = Vector2(1.5625, 1.5625)
 zoom = Vector2(2, 2)
 limit_bottom = 430
 
-[node name="UI" type="CanvasLayer" parent="Player/Camera2D"]
-script = ExtResource("2_fs88w")
-
-[node name="Control" type="Control" parent="Player/Camera2D/UI"]
-process_mode = 3
-visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Death" type="PanelContainer" parent="Player/Camera2D/UI/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -80.0
-offset_right = 48.0
-offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Player/Camera2D/UI/Control/Death"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="btn_retry" type="Button" parent="Player/Camera2D/UI/Control/Death/VBoxContainer"]
-layout_mode = 2
-text = "Retry
-"
-
-[node name="btn_Main_menu" type="Button" parent="Player/Camera2D/UI/Control/Death/VBoxContainer"]
-layout_mode = 2
-text = "Main Menu
-"
-
-[node name="Label" type="Label" parent="Player/Camera2D/UI/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -37.0
-offset_top = -120.0
-offset_right = 37.0
-offset_bottom = -97.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You Died!"
-
-[node name="GemControl" type="Control" parent="Player/Camera2D/UI"]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="GemCounter" type="Label" parent="Player/Camera2D/UI/GemControl"]
-layout_mode = 0
-offset_left = -37.0
-offset_top = 15.0
-offset_right = -3.0
-offset_bottom = 43.0
-text = "0
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/Camera2D/UI/GemControl"]
-position = Vector2(15, 27)
-scale = Vector2(3.34375, 3.25)
-sprite_frames = SubResource("SpriteFrames_xa4tf")
-autoplay = "default"
-frame_progress = 0.732916
+[node name="UI" parent="Player/Camera2D" instance=ExtResource("3_4qeaf")]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(22, -37)
@@ -993,7 +872,7 @@ layer_1/tile_data = PackedInt32Array(1507338, 131072, 1, 1507339, 131072, 1, 150
 layer_2/name = "Foreground"
 layer_2/tile_data = PackedInt32Array(1507348, 1310720, 0, 1572884, 1310720, 1, 1638420, 1310720, 2, 1703956, 1310720, 3, 1507362, 655360, 11, 1572899, 720896, 12, 1179697, 524288, 13, 1245264, 1179648, 0, 1245265, 1245184, 0)
 
-[node name="Platform" parent="." instance=ExtResource("3_p864o")]
+[node name="Platform" parent="." instance=ExtResource("6_8o8n8")]
 position = Vector2(795, 270)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
@@ -1002,7 +881,7 @@ libraries = {
 }
 autoplay = "move"
 
-[node name="Platform2" parent="." instance=ExtResource("3_p864o")]
+[node name="Platform2" parent="." instance=ExtResource("6_8o8n8")]
 position = Vector2(1532, 314)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
@@ -1011,7 +890,7 @@ libraries = {
 }
 autoplay = "move"
 
-[node name="KillZone" parent="." instance=ExtResource("4_04x0h")]
+[node name="KillZone" parent="." instance=ExtResource("7_jjl4c")]
 position = Vector2(961, 509)
 script = null
 
@@ -1019,11 +898,15 @@ script = null
 position = Vector2(-505, -33)
 shape = SubResource("WorldBoundaryShape2D_ud85o")
 
-[node name="Gem" parent="." instance=ExtResource("4_e7mxa")]
-position = Vector2(311, 321)
+[node name="Timer" type="Timer" parent="KillZone"]
 
-[connection signal="pressed" from="Player/Camera2D/UI/Control/Death/VBoxContainer/btn_retry" to="Player" method="_on_btn_retry_pressed"]
-[connection signal="pressed" from="Player/Camera2D/UI/Control/Death/VBoxContainer/btn_Main_menu" to="Player" method="_on_btn_main_menu_pressed"]
+[node name="Gem" parent="." instance=ExtResource("8_okyvo")]
+position = Vector2(329, 320)
+
+[node name="Enemy" parent="." instance=ExtResource("8_bqrg2")]
+position = Vector2(690, 254)
+
+[node name="Enemy2" parent="." instance=ExtResource("8_bqrg2")]
+position = Vector2(1111, 254)
+
 [connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
-[connection signal="body_entered" from="KillZone" to="Player" method="_on_kill_zone_body_entered"]
-[connection signal="body_entered" from="Gem" to="." method="_on_gem_body_entered"]

@@ -54,9 +54,3 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _on_btn_retry_pressed():
-	get_tree().reload_current_scene()
-
-
-func _on_btn_main_menu_pressed():
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
