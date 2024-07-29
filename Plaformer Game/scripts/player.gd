@@ -54,12 +54,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _on_kill_zone_body_entered():
-	print("test")
-	get_tree().create_timer(1.5).timeout
-	control.visible = true
-
-
 func _on_btn_retry_pressed():
 	get_tree().reload_current_scene()
 

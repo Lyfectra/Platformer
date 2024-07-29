@@ -1,10 +1,49 @@
-[gd_scene load_steps=15 format=3 uid="uid://bq0sxdpl0tscf"]
+[gd_scene load_steps=23 format=3 uid="uid://bq0sxdpl0tscf"]
 
 [ext_resource type="PackedScene" uid="uid://cgm1w4v0d1v75" path="res://scenes/player.tscn" id="1_38y30"]
-[ext_resource type="Script" path="res://scenes/UI.gd" id="2_fs88w"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_afyya"]
+[ext_resource type="Script" path="res://scripts/UI.gd" id="2_fs88w"]
 [ext_resource type="Texture2D" uid="uid://drj5et0w2tk1i" path="res://assets/Dungeon Ruins Tileset/Dungeon Ruins Tileset Day.png" id="2_mm8rh"]
 [ext_resource type="PackedScene" uid="uid://byevch6enjkc2" path="res://scenes/Platform.tscn" id="3_p864o"]
 [ext_resource type="PackedScene" uid="uid://6heo7rygpqxf" path="res://scenes/kill_zone.tscn" id="4_04x0h"]
+[ext_resource type="PackedScene" uid="uid://h46eajiea5qw" path="res://scenes/gem.tscn" id="4_e7mxa"]
+[ext_resource type="Texture2D" uid="uid://yypyp36eyyye" path="res://assets/spr_coin_azu.png" id="4_fh730"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lty4v"]
+atlas = ExtResource("4_fh730")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t63g"]
+atlas = ExtResource("4_fh730")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu4dr"]
+atlas = ExtResource("4_fh730")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faa4x"]
+atlas = ExtResource("4_fh730")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xa4tf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lty4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t63g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu4dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faa4x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q6a6"]
 texture = ExtResource("2_mm8rh")
@@ -843,6 +882,7 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ud85o"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_afyya")
 
 [node name="Player" parent="." instance=ExtResource("1_38y30")]
 position = Vector2(181, 332)
@@ -858,6 +898,7 @@ limit_bottom = 430
 script = ExtResource("2_fs88w")
 
 [node name="Control" type="Control" parent="Player/Camera2D/UI"]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 8
@@ -913,6 +954,33 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "You Died!"
 
+[node name="GemControl" type="Control" parent="Player/Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="GemCounter" type="Label" parent="Player/Camera2D/UI/GemControl"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 15.0
+offset_right = -3.0
+offset_bottom = 43.0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/Camera2D/UI/GemControl"]
+position = Vector2(15, 27)
+scale = Vector2(3.34375, 3.25)
+sprite_frames = SubResource("SpriteFrames_xa4tf")
+autoplay = "default"
+frame_progress = 0.732916
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(22, -37)
 scale = Vector2(0.833111, 1.01019)
@@ -945,11 +1013,17 @@ autoplay = "move"
 
 [node name="KillZone" parent="." instance=ExtResource("4_04x0h")]
 position = Vector2(961, 509)
+script = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 position = Vector2(-505, -33)
 shape = SubResource("WorldBoundaryShape2D_ud85o")
 
+[node name="Gem" parent="." instance=ExtResource("4_e7mxa")]
+position = Vector2(311, 321)
+
 [connection signal="pressed" from="Player/Camera2D/UI/Control/Death/VBoxContainer/btn_retry" to="Player" method="_on_btn_retry_pressed"]
 [connection signal="pressed" from="Player/Camera2D/UI/Control/Death/VBoxContainer/btn_Main_menu" to="Player" method="_on_btn_main_menu_pressed"]
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="KillZone" to="Player" method="_on_kill_zone_body_entered"]
+[connection signal="body_entered" from="Gem" to="." method="_on_gem_body_entered"]

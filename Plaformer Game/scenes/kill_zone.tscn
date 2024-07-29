@@ -1,9 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://6heo7rygpqxf"]
 
-[ext_resource type="Script" path="res://scripts/kill_zone.gd" id="1_4yxrx"]
+[sub_resource type="GDScript" id="GDScript_q430k"]
+script/source = "extends Area2D
+
+@onready var control = $CanvasLayer/Control
+
+
+
+
+"
 
 [node name="KillZone" type="Area2D"]
 collision_mask = 2
-script = ExtResource("1_4yxrx")
+script = SubResource("GDScript_q430k")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
