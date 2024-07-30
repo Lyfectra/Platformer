@@ -909,4 +909,4 @@ position = Vector2(690, 254)
 [node name="Enemy2" parent="." instance=ExtResource("8_bqrg2")]
 position = Vector2(1111, 254)
 
-[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
+[connection signal="body_entered" from="KillZone" to="Player/Camera2D/UI" method="_on_kill_zone_body_entered"]

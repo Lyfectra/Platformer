@@ -54,8 +54,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y1r6o"]
-radius = 6.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_fehrp"]
+radius = 7.0
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_dd17i")
@@ -66,12 +66,6 @@ animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.374001
 
-[node name="KillZone" parent="." instance=ExtResource("3_o0s6k")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_y1r6o")
-
 [node name="RayCastR" type="RayCast2D" parent="."]
 position = Vector2(5, 10)
 target_position = Vector2(0, 9)
@@ -79,3 +73,11 @@ target_position = Vector2(0, 9)
 [node name="RayCastL" type="RayCast2D" parent="."]
 position = Vector2(-5, 10)
 target_position = Vector2(0, 9)
+
+[node name="KillZone" parent="." instance=ExtResource("3_o0s6k")]
+position = Vector2(961, 509)
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(-961, -499)
+shape = SubResource("CircleShape2D_fehrp")

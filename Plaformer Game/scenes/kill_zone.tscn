@@ -2,12 +2,10 @@
 
 [sub_resource type="GDScript" id="GDScript_q430k"]
 script/source = "extends Area2D
+@onready var control = $Control
 
-@onready var control = $CanvasLayer/Control
-
-
-
-
+func _on_body_entered(body):
+	control.visible = true
 "
 
 [node name="KillZone" type="Area2D"]
