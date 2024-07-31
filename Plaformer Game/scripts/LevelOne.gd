@@ -7,17 +7,10 @@ extends Node2D
 @onready var gem_counter = $Player/Camera2D/UI/GemControl/GemCounter
 var GemCollected = 0
 
-
 func _ready():
 	get_tree().paused = false
 	GemCollected = 0
 
 
-func _on_gem_body_entered(body):
-	if body.is_in_group("Player"):
-		print("+1 coin")
-		GemCollected += 1
-		gem_counter.text += 1
-		gem.queue_free()
-
-
+func _on_kill_zone_body_entered(body):
+	pass # Replace with function body.

@@ -19,7 +19,7 @@ region = Rect2(32, 0, 16, 16)
 atlas = ExtResource("2_06yps")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5r03i"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_pacxy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -152,8 +152,10 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -51.0
+offset_top = 10.0
+offset_right = -11.0
+offset_bottom = 50.0
 grow_horizontal = 0
 
 [node name="GemCounter" type="Label" parent="GemControl"]
@@ -170,7 +172,7 @@ vertical_alignment = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GemControl"]
 position = Vector2(15, 27)
 scale = Vector2(3.34375, 3.25)
-sprite_frames = SubResource("SpriteFrames_5r03i")
+sprite_frames = SubResource("SpriteFrames_pacxy")
 autoplay = "default"
 
 [connection signal="pressed" from="Control/Death/VBoxContainer/btn_retry" to="." method="_on_btn_retry_pressed"]

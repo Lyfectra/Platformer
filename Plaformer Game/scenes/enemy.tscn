@@ -81,3 +81,5 @@ script = null
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 position = Vector2(-961, -499)
 shape = SubResource("CircleShape2D_fehrp")
+
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
