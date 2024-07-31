@@ -40,12 +40,15 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbmws"]
+radius = 6.0
 
 [node name="Gem" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_x88fs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.19209e-07, -1.19209e-07)
+scale = Vector2(0.8125, 0.8125)
 sprite_frames = SubResource("SpriteFrames_3mc31")
 animation = &"Gem"
 autoplay = "Gem"
@@ -53,3 +56,5 @@ frame_progress = 0.99548
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qbmws")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

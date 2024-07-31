@@ -14,5 +14,5 @@ func _process(delta):
 		direction = -1
 	position.x += direction * SPEED * delta
 
-
-
+func _on_kill_zone_body_entered(body):
+	control.visible = true
