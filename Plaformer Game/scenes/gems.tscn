@@ -1,0 +1,127 @@
+[gd_scene load_steps=14 format=3 uid="uid://ct0o13hcuqsjk"]
+
+[ext_resource type="Script" path="res://scripts/Gems.gd" id="1_hpd35"]
+[ext_resource type="Texture2D" uid="uid://yypyp36eyyye" path="res://assets/spr_coin_azu.png" id="2_3uvtm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4xri"]
+atlas = ExtResource("2_3uvtm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f87vc"]
+atlas = ExtResource("2_3uvtm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqqwn"]
+atlas = ExtResource("2_3uvtm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt3bh"]
+atlas = ExtResource("2_3uvtm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bms75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4xri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f87vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqqwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt3bh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7sqbj"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lty4v"]
+atlas = ExtResource("2_3uvtm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t63g"]
+atlas = ExtResource("2_3uvtm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu4dr"]
+atlas = ExtResource("2_3uvtm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faa4x"]
+atlas = ExtResource("2_3uvtm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qsum4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lty4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t63g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu4dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faa4x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gems" type="Node2D"]
+script = ExtResource("1_hpd35")
+
+[node name="Gem" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gem"]
+rotation = 0.00165921
+sprite_frames = SubResource("SpriteFrames_bms75")
+autoplay = "default"
+frame_progress = 0.051278
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gem"]
+rotation = 0.000968986
+shape = SubResource("CapsuleShape2D_7sqbj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GemControl" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -51.0
+offset_top = 10.0
+offset_right = -11.0
+offset_bottom = 50.0
+grow_horizontal = 0
+
+[node name="GemCounter" type="Label" parent="CanvasLayer/GemControl"]
+layout_mode = 0
+offset_left = -37.0
+offset_top = 15.0
+offset_right = -3.0
+offset_bottom = 43.0
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/GemControl"]
+position = Vector2(15, 27)
+scale = Vector2(3.34375, 3.25)
+sprite_frames = SubResource("SpriteFrames_qsum4")
+autoplay = "default"
+
+[connection signal="body_entered" from="Gem" to="." method="_on_gem_body_entered"]
