@@ -12,5 +12,3 @@ func _ready():
 	GemCollected = 0
 
 
-func _on_kill_zone_body_entered(body):
-	pass # Replace with function body.

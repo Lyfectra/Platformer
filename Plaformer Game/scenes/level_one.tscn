@@ -900,13 +900,16 @@ shape = SubResource("WorldBoundaryShape2D_ud85o")
 
 [node name="Timer" type="Timer" parent="KillZone"]
 
-[node name="Node" type="Node" parent="."]
+[node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Node" instance=ExtResource("8_bqrg2")]
+[node name="Enemy" parent="Enemies" instance=ExtResource("8_bqrg2")]
 position = Vector2(1111, 254)
 
-[node name="Enemy2" parent="Node" instance=ExtResource("8_bqrg2")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("8_bqrg2")]
 position = Vector2(705, 254)
 
 [node name="Gem" parent="." instance=ExtResource("8_okyvo")]
 position = Vector2(360, 321)
+
+[connection signal="body_entered" from="KillZone" to="Player/Camera2D/UI" method="_on_kill_zone_body_entered"]
+[connection signal="body_entered" from="Gem" to="Player/Camera2D/UI" method="_on_gem_body_entered"]
