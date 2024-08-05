@@ -1,11 +1,12 @@
 extends Node
 
+var gems_collected = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+signal add_gem
 
+func pick_up_gem():
+	gems_collected += 1
+	emit_signal("add_gem")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func restart():
+	gems_collected = 0

@@ -29,17 +29,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -565.0
-offset_top = -313.0
-offset_right = -520.0
-offset_bottom = -282.0
+offset_left = -129.0
+offset_top = -52.0
+offset_right = 129.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
-text = "Back
-"
+text = "Jump --> W / SpaceBar / Up Arrow"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Move Left --> A / Left Arrow"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Move Right --> D / Right Arrow"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Roll --> S / Down Arrow"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -49,71 +65,20 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -42.0
-offset_top = -200.0
+offset_top = -108.0
 offset_right = 42.0
-offset_bottom = -173.0
+offset_bottom = -81.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Movement"
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.5
-offset_top = -165.0
-offset_right = 120.5
-offset_bottom = -138.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Jump --> W / SpaceBar / Up Arrow"
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 2
+offset_left = -545.0
+offset_top = -293.0
+offset_right = -500.0
+offset_bottom = -262.0
+text = "Back
+"
 
-[node name="Label3" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -126.0
-offset_right = 42.0
-offset_bottom = -99.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Move Left --> A / Left Arrow"
-
-[node name="Label4" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -92.0
-offset_right = 42.0
-offset_bottom = -65.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Move Right --> D / Right Arrow"
-
-[node name="Label5" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -61.0
-offset_right = 42.0
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Roll --> S / Down Arrow"
-
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]

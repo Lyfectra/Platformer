@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://drj5et0w2tk1i" path="res://assets/Dungeon Ruins Tileset/Dungeon Ruins Tileset Day.png" id="5_7ew0c"]
 [ext_resource type="PackedScene" uid="uid://byevch6enjkc2" path="res://scenes/Platform.tscn" id="6_8o8n8"]
 [ext_resource type="PackedScene" uid="uid://6heo7rygpqxf" path="res://scenes/kill_zone.tscn" id="7_jjl4c"]
-[ext_resource type="PackedScene" uid="uid://ct0o13hcuqsjk" path="res://scenes/gems.tscn" id="8_8l3c2"]
 [ext_resource type="PackedScene" uid="uid://g7jyxcp73kd6" path="res://scenes/enemy.tscn" id="8_bqrg2"]
+[ext_resource type="PackedScene" uid="uid://h46eajiea5qw" path="res://scenes/gem.tscn" id="8_ilgfg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q6a6"]
 texture = ExtResource("5_7ew0c")
@@ -908,7 +908,10 @@ position = Vector2(1111, 254)
 [node name="Enemy2" parent="Enemies" instance=ExtResource("8_bqrg2")]
 position = Vector2(705, 254)
 
-[node name="Gems" parent="." instance=ExtResource("8_8l3c2")]
-position = Vector2(238, 320)
+[node name="Gem" parent="." instance=ExtResource("8_ilgfg")]
+position = Vector2(259, 317)
+
+[node name="Gem2" parent="." instance=ExtResource("8_ilgfg")]
+position = Vector2(289, 317)
 
 [connection signal="body_entered" from="KillZone" to="Player/Camera2D/UI" method="_on_kill_zone_body_entered"]

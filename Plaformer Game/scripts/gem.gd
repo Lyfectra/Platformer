@@ -2,4 +2,7 @@ extends Area2D
 
 
 func _on_body_entered(body):
-	queue_free()
+	if body.is_in_group("Player"):
+		Gem.pick_up_gem()
+		queue_free()
+
