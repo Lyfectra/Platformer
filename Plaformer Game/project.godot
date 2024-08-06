@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Gem="*res://Singletons/Gem.gd"
+Gem="*res://Singletons/GemSingle.gd"
 
 [input]
 

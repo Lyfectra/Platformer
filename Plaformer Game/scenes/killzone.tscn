@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bba3adwkor8lo"]
+
+[node name="Enemy_kill_zone" type="Area2D"]

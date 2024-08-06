@@ -24,5 +24,8 @@ func _on_kill_zone_body_entered(body):
 func update_gem_counter():
 	gems_collected = Gem.gems_collected
 	gem_counter.text = str(gems_collected)
-	print("+1 gem")
+	print("+1 Gem")
 
+
+func _on_win_body_entered(body):
+	get_tree().change_scene_to_file("res://scenes/Win_screen.tscn")
