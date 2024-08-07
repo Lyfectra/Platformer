@@ -13,5 +13,7 @@ func _process(delta):
 	if not ray_cast_r.is_colliding():
 		direction = -1
 	position.x += direction * SPEED * delta
+	
 
-
+func _on_killzone_body_entered(body):
+	control.visible = true

@@ -1,6 +1,7 @@
 extends CanvasLayer
 @onready var control = $Control
 @onready var gem_counter = $GemControl/GemCounter
+@onready var win_control = $Win_control
 
 var gems_collected = Gem.gems_collected
 
@@ -28,4 +29,14 @@ func update_gem_counter():
 
 
 func _on_win_body_entered(body):
-	get_tree().change_scene_to_file("res://scenes/Win_screen.tscn")
+	if body.is_in_group("Player"):
+		get_tree().paused = true
+		win_control.visible = true
+
+
+func _on_retry_btn_pressed():
+	get_tree().reload_current_scene()
+
+
+func _on_main_menu_btn_pressed():
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

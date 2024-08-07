@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://g7jyxcp73kd6"]
+[gd_scene load_steps=11 format=3 uid="uid://g7jyxcp73kd6"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_dd17i"]
 [ext_resource type="Texture2D" uid="uid://fmmwhujlwjkw" path="res://assets/Slime/idle.png" id="1_ygwim"]
@@ -53,6 +53,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_r3jl8"]
+radius = 7.0
+
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_dd17i")
 
@@ -69,3 +72,12 @@ target_position = Vector2(0, 9)
 [node name="RayCastL" type="RayCast2D" parent="."]
 position = Vector2(-5, 10)
 target_position = Vector2(0, 9)
+
+[node name="Killzone" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_r3jl8")
+
+[connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]
