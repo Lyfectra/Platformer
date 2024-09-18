@@ -16,4 +16,4 @@ func _process(delta):
 	
 
 func _on_killzone_body_entered(body):
-	control.visible = true
+	get_tree().reload_current_scene()

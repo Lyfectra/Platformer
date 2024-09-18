@@ -72,7 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Movement"
 
-[node name="Button" type="Button" parent="CanvasLayer/Control"]
+[node name="btn_back" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 2
 offset_left = -545.0
 offset_top = -293.0
@@ -81,4 +81,4 @@ offset_bottom = -262.0
 text = "Back
 "
 
-[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/btn_back" to="." method="_on_btn_back_pressed"]
