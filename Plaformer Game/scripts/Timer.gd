@@ -16,11 +16,11 @@ func _process(delta):
 	seconds = fmod(time, 60)
 	minutes = fmod(time, 3600) / 60
 	$Minutes.text = "%02d:" % minutes
-	$Seconds.text = "%02d:" % seconds
-	$Msecs.text = "%02d:" % msecs
-	Ui.minutes = minutes
-	Ui.seconds = seconds
-	Ui.msecs = msecs
+	$Seconds.text = "%02d." % seconds
+	$Msecs.text = "%02d" % msecs
+	Ui.minutes = "%02d:" % minutes
+	Ui.seconds = "%02d." % seconds
+	Ui.msecs = "%02d" % msecs
 	
 
 func stop():

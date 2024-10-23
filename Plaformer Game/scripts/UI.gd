@@ -29,9 +29,14 @@ func _on_kill_zone_body_entered(body):
 	get_tree().paused = true
 	#makes the Fail_control body visible
 	Fail_control.visible = true
-	finalScore = (str(Ui.minutes) + "." +  str(Ui.seconds) + "." + str(Ui.msecs))
+	finalScore = (str(Ui.minutes) + str(Ui.seconds) + str(Ui.msecs))
 	print(finalScore)
 
+func write_to_file():
+	var file = FileAccess.open("res://assets/GameScores.dat", FileAccess.WRITE)
+	print(finalScore)
+	file.seek_end()
+	file.store_string("name " + str(finalScore))
 
 func update_gem_counter():
 	gems_collected = Gem.gems_collected
