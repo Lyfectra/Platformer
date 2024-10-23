@@ -3,7 +3,10 @@ extends CanvasLayer
 @onready var Fail_control = $Fail_control
 @onready var gem_counter = $GemControl/GemCounter
 @onready var win_control = $Win_control
-
+var seconds = 0
+var minutes = 0
+var msecs = 0
+var finalScore = 0
 #creates a variable that is equal to the gems_collected function that is in the gem singleton
 var gems_collected = Gem.gems_collected
 
@@ -26,6 +29,8 @@ func _on_kill_zone_body_entered(body):
 	get_tree().paused = true
 	#makes the Fail_control body visible
 	Fail_control.visible = true
+	finalScore = (str(Ui.minutes) + "." +  str(Ui.seconds) + "." + str(Ui.msecs))
+	print(finalScore)
 
 
 func update_gem_counter():

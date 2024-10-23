@@ -44,6 +44,11 @@ text = "Start"
 layout_mode = 2
 text = "How To Play"
 
+[node name="btn_leaderboard" type="Button" parent="UI/Control/VBoxContainer"]
+layout_mode = 2
+text = "Leaderboard
+"
+
 [node name="btn_Quit" type="Button" parent="UI/Control/VBoxContainer"]
 layout_mode = 2
 text = "Quit
