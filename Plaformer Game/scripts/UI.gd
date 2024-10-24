@@ -30,13 +30,22 @@ func _on_kill_zone_body_entered(body):
 	#makes the Fail_control body visible
 	Fail_control.visible = true
 	finalScore = (str(Ui.minutes) + str(Ui.seconds) + str(Ui.msecs))
+	write_to_file()
 	print(finalScore)
 
+
+func read_file():
+	var score = ""
+	if FileAccess.file_exists("user://GameScores.dat"):
+		var file = FileAccess.open("user://GameScores.dat", FileAccess.READ)
+		score = file.get_as_text()
+
+
 func write_to_file():
-	var file = FileAccess.open("res://assets/GameScores.dat", FileAccess.WRITE)
-	print(finalScore)
+	var file = FileAccess.open("user://GameScores.dat", FileAccess.READ_WRITE)
 	file.seek_end()
-	file.store_string("name " + str(finalScore))
+	file.store_string("\nname " + str(finalScore ))
+
 
 func update_gem_counter():
 	gems_collected = Gem.gems_collected

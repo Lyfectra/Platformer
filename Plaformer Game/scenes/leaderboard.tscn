@@ -22,21 +22,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -129.0
-offset_top = -52.0
-offset_right = 129.0
-offset_bottom = 52.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="LeaderBoard" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -52,36 +38,6 @@ grow_vertical = 2
 text = "Leaderboard
 "
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -109.0
-offset_top = -148.0
-offset_right = -7.0
-offset_bottom = -121.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Fastest Time -->"
-
-[node name="Label3" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -121.0
-offset_top = -113.0
-offset_right = 5.0
-offset_bottom = -86.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Slowest Time -->"
-
 [node name="btn_back" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 2
 offset_left = -545.0
@@ -90,5 +46,58 @@ offset_right = -500.0
 offset_bottom = -262.0
 text = "Back
 "
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -149.0
+offset_right = 85.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelFirst" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_right = 85.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "1st -"
+
+[node name="LabelSecond" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -11.5
+offset_right = 85.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "2nd -"
+
+[node name="LabelThird" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -23.0
+offset_right = 85.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "3rd -"
 
 [connection signal="pressed" from="CanvasLayer/Control/btn_back" to="." method="_on_btn_back_pressed"]

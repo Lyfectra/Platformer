@@ -7,10 +7,6 @@ var msecs: int = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#if is_stopped:
-		#time += delta
-		#$minutes.text = str(time).pad_decimals(2)
-		#print(time)
 	time += delta
 	msecs = fmod(time, 1) * 100
 	seconds = fmod(time, 60)
