@@ -66,23 +66,15 @@ offset_bottom = -113.5
 grow_horizontal = 2
 text = "Enter Your Name"
 
-[node name="btn_save" type="Button" parent="UI/Control"]
-layout_mode = 0
-offset_left = 84.5
-offset_top = -106.5
-offset_right = 136.5
-offset_bottom = -64.5
-text = "Save"
-
-[node name="NameBox" type="TextEdit" parent="UI"]
+[node name="TextEdit" type="TextEdit" parent="UI"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -111.0
+offset_left = -85.0
 offset_top = -124.0
-offset_right = 60.0
+offset_right = 86.0
 offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -91,4 +83,3 @@ grow_vertical = 2
 [connection signal="pressed" from="UI/Control/VBoxContainer/btn_how_to" to="UI" method="_on_btn_how_to_pressed"]
 [connection signal="pressed" from="UI/Control/VBoxContainer/btn_leaderboard" to="UI" method="_on_btn_leaderboard_pressed"]
 [connection signal="pressed" from="UI/Control/VBoxContainer/btn_Quit" to="UI" method="_on_btn_quit_pressed"]
-[connection signal="pressed" from="UI/Control/btn_save" to="UI" method="_on_btn_save_pressed"]

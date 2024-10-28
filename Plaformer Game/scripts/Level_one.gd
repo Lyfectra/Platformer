@@ -5,4 +5,5 @@ extends Node2D
 func _ready():
 	get_tree().paused = false
 	Gem.restart()
+	MainUi._on_btn_save_pressed()
 

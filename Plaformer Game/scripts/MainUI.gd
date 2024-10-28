@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@onready var name_box = $NameBox
+
+
 #button for changing main menu scene to game scene
 func _on_btn_start_pressed():
 	get_tree().change_scene_to_file("res://scenes/level_one.tscn")
@@ -12,6 +15,11 @@ func _on_btn_how_to_pressed():
 func _on_btn_quit_pressed():
 	get_tree().quit()
 
-
+#button to go to the leaderboard scene
 func _on_btn_leaderboard_pressed():
 	get_tree().change_scene_to_file("res://scenes/leaderboard.tscn")
+
+
+func _on_btn_save_pressed():
+	var name = name_box.text
+	print(name)
