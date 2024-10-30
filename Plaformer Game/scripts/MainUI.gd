@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var name_box = $NameBox
-
+var username = ""
 
 #button for changing main menu scene to game scene
 func _on_btn_start_pressed():
@@ -21,5 +21,5 @@ func _on_btn_leaderboard_pressed():
 
 
 func _on_btn_save_pressed():
-	var name = name_box.text
-	print(name)
+	MainUi.username = name_box.text
+	print(MainUi.username)

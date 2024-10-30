@@ -200,6 +200,10 @@ offset_right = 68.0
 offset_bottom = 23.0
 text = "00"
 
+[node name="leaderboard" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="pressed" from="Fail_control/Death/VBoxContainer/btn_retry" to="." method="_on_btn_retry_pressed"]
 [connection signal="pressed" from="Fail_control/Death/VBoxContainer/btn_Main_menu" to="." method="_on_btn_main_menu_pressed"]
 [connection signal="pressed" from="Win_control/PanelContainer/VBoxContainer/retry_btn" to="." method="_on_retry_btn_pressed"]

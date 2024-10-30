@@ -7,7 +7,7 @@ var seconds = 0
 var minutes = 0
 var msecs = 0
 var finalScore = 0
-var playerName = name
+@onready var leaderboard = $leaderboard
 
 #creates a variable that is equal to the gems_collected function that is in the gem singleton
 var gems_collected = Gem.gems_collected
@@ -33,20 +33,22 @@ func _on_kill_zone_body_entered(body):
 	Fail_control.visible = true
 	finalScore = (str(Ui.minutes) + str(Ui.seconds) + str(Ui.msecs))
 	read_write_to_file()
-	print(finalScore)
-
+	print(MainUi.username + " " + finalScore)
 
 func read_file():
 	var score = ""
 	if FileAccess.file_exists("user://GameScores.dat"):
 		var file = FileAccess.open("user://GameScores.dat", FileAccess.READ)
 		score = file.get_as_text()
+	else:
+		score = "0"
+	leaderboard.text = score
 
 
 func read_write_to_file():
 	var file = FileAccess.open("user://GameScores.dat", FileAccess.READ_WRITE)
 	file.seek_end()
-	file.store_string("\n" + playerName + " " + str(finalScore))
+	file.store_string("\n" + MainUi.username + " " + str(finalScore))
 
 
 func update_gem_counter():
