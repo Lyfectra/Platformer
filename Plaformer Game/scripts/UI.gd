@@ -8,7 +8,7 @@ var minutes = 0
 var msecs = 0
 var finalTime = 0
 var content = ""
-
+#var counter = 0
 #creates a variable that is equal to the gems_collected function that is in the gem singleton
 var gems_collected = Gem.gems_collected
 
@@ -43,10 +43,13 @@ func read_write_to_file():
 	file.seek_end()
 	file.store_string(MainUi.username + " " + str(finalTime) + "\n")
 
+#func picked_up():
+	#counter += 1
+	#print("+1 Gem")
 
 func update_gem_counter():
 	gems_collected = Gem.gems_collected
-	gem_counter.text = str(gems_collected)
+	$GemCounter.text = str(gems_collected)
 	print("+1 Gem")
 
 #when the win Area2d is entered by the player this function is called
