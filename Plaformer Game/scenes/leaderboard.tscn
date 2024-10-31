@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://beulgi3sptvs7"]
+[gd_scene load_steps=3 format=3 uid="uid://beulgi3sptvs7"]
 
 [ext_resource type="Script" path="res://scripts/leaderboard.gd" id="1_eyaxe"]
+[ext_resource type="Script" path="res://scripts/Scores.gd" id="2_jdevp"]
 
 [node name="Leaderboard" type="Node2D"]
 script = ExtResource("1_eyaxe")
@@ -47,7 +48,7 @@ offset_bottom = -262.0
 text = "Back
 "
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Scores" type="Panel" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -59,45 +60,11 @@ offset_right = 85.0
 offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_jdevp")
 
-[node name="LabelFirst" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -85.0
-offset_right = 85.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "1st -"
-
-[node name="LabelSecond" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -85.0
-offset_top = -11.5
-offset_right = 85.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "2nd -"
-
-[node name="LabelThird" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -85.0
-offset_top = -23.0
-offset_right = 85.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "3rd -"
+[node name="ScoreBoard" type="Label" parent="CanvasLayer/Scores"]
+layout_mode = 0
+offset_right = 170.0
+offset_bottom = 113.0
 
 [connection signal="pressed" from="CanvasLayer/Control/btn_back" to="." method="_on_btn_back_pressed"]

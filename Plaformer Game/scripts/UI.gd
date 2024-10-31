@@ -6,15 +6,15 @@ extends CanvasLayer
 var seconds = 0
 var minutes = 0
 var msecs = 0
-var finalScore = 0
-@onready var leaderboard = $leaderboard
+var finalTime = 0
+var content = ""
 
 #creates a variable that is equal to the gems_collected function that is in the gem singleton
 var gems_collected = Gem.gems_collected
 
 func _ready():
 	Gem.add_gem.connect(update_gem_counter)
-
+	read_file()
 #when the retry button is pressed it reloads the current scene
 func _on_btn_retry_pressed():
 	get_tree().reload_current_scene()
@@ -31,24 +31,16 @@ func _on_kill_zone_body_entered(body):
 	get_tree().paused = true
 	#makes the Fail_control body visible
 	Fail_control.visible = true
-	finalScore = (str(Ui.minutes) + str(Ui.seconds) + str(Ui.msecs))
-	read_write_to_file()
-	print(MainUi.username + " " + finalScore)
 
 func read_file():
-	var score = ""
-	if FileAccess.file_exists("user://GameScores.dat"):
-		var file = FileAccess.open("user://GameScores.dat", FileAccess.READ)
-		score = file.get_as_text()
-	else:
-		score = "0"
-	leaderboard.text = score
-
+	var txt_file = FileAccess.open("user://GameScores.dat", FileAccess.READ)
+	Ui.content = txt_file.get_as_text()
+	return content
 
 func read_write_to_file():
 	var file = FileAccess.open("user://GameScores.dat", FileAccess.READ_WRITE)
 	file.seek_end()
-	file.store_string("\n" + MainUi.username + " " + str(finalScore))
+	file.store_string(MainUi.username + " " + str(finalTime) + "\n")
 
 
 func update_gem_counter():
@@ -62,6 +54,9 @@ func _on_win_body_entered(body):
 		get_tree().paused = true
 		#makes the win_control body visible
 		win_control.visible = true
+		finalTime = (str(Ui.minutes) + str(Ui.seconds) + str(Ui.msecs))
+		read_write_to_file()
+		print(MainUi.username + " " + finalTime)
 
 #when the retry button is pressed it relo;ads the current scene
 func _on_retry_btn_pressed():

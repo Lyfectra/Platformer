@@ -17,7 +17,7 @@ func _process(delta):
 	Ui.minutes = "%02d:" % minutes
 	Ui.seconds = "%02d." % seconds
 	Ui.msecs = "%02d" % msecs
-	
+	$ScoreBoard.text = Ui.content
 
 func stop():
 	set_process(false)

@@ -161,10 +161,6 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Win_control/PanelContainer"]
 layout_mode = 2
 
-[node name="nxt_level_btn" type="Button" parent="Win_control/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Next Level"
-
 [node name="retry_btn" type="Button" parent="Win_control/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Retry"
@@ -199,10 +195,6 @@ offset_left = 47.0
 offset_right = 68.0
 offset_bottom = 23.0
 text = "00"
-
-[node name="leaderboard" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="pressed" from="Fail_control/Death/VBoxContainer/btn_retry" to="." method="_on_btn_retry_pressed"]
 [connection signal="pressed" from="Fail_control/Death/VBoxContainer/btn_Main_menu" to="." method="_on_btn_main_menu_pressed"]
