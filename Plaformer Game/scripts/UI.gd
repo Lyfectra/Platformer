@@ -15,6 +15,7 @@ var gems_collected = Gem.gems_collected
 func _ready():
 	Gem.add_gem.connect(update_gem_counter)
 	read_file()
+
 #when the retry button is pressed it reloads the current scene
 func _on_btn_retry_pressed():
 	get_tree().reload_current_scene()

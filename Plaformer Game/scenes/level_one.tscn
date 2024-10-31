@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bq0sxdpl0tscf"]
+[gd_scene load_steps=19 format=3 uid="uid://bq0sxdpl0tscf"]
 
 [ext_resource type="Script" path="res://scripts/Level_one.gd" id="1_nw34w"]
 [ext_resource type="PackedScene" uid="uid://cgm1w4v0d1v75" path="res://scenes/player.tscn" id="2_yo87q"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://drj5et0w2tk1i" path="res://assets/Dungeon Ruins Tileset/Dungeon Ruins Tileset Day.png" id="5_7ew0c"]
 [ext_resource type="PackedScene" uid="uid://byevch6enjkc2" path="res://scenes/Platform.tscn" id="6_8o8n8"]
 [ext_resource type="PackedScene" uid="uid://6heo7rygpqxf" path="res://scenes/kill_zone.tscn" id="7_jjl4c"]
-[ext_resource type="PackedScene" uid="uid://g7jyxcp73kd6" path="res://scenes/enemy.tscn" id="8_bqrg2"]
 [ext_resource type="PackedScene" uid="uid://bba3adwkor8lo" path="res://scenes/killzone.tscn" id="9_gihet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q6a6"]
@@ -920,9 +919,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
 position = Vector2(1761.22, 157)
 shape = SubResource("RectangleShape2D_x71y7")
-
-[node name="Enemy" parent="." instance=ExtResource("8_bqrg2")]
-position = Vector2(237, 318)
 
 [connection signal="body_entered" from="KillZone" to="Player/Camera2D/UI" method="_on_kill_zone_body_entered"]
 [connection signal="body_entered" from="Win" to="Player/Camera2D/UI" method="_on_win_body_entered"]
