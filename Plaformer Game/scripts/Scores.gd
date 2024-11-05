@@ -1,6 +1,5 @@
 extends Panel
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	#sets the labels text to the content variable in the Ui script
 	$ScoreBoard.text = Ui.content

@@ -1,16 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cumcodtepo5ob"]
+[gd_scene load_steps=10 format=3 uid="uid://cumcodtepo5ob"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_sr7v8"]
 [ext_resource type="Texture2D" uid="uid://yypyp36eyyye" path="res://assets/spr_coin_azu.png" id="2_26vao"]
-[ext_resource type="Script" path="res://scripts/GemNumber.gd" id="3_cr2l5"]
+[ext_resource type="Script" path="res://scripts/GemCounter.gd" id="3_3tek8"]
 [ext_resource type="Script" path="res://scripts/Timer.gd" id="3_yqmn4"]
-
-[sub_resource type="GDScript" id="GDScript_g14c6"]
-script/source = "extends Label
-
-
-
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lty4v"]
 atlas = ExtResource("2_26vao")
@@ -132,9 +125,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -48.0
-offset_top = -50.5
+offset_top = -50.0
 offset_right = 48.0
-offset_bottom = 50.5
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -147,6 +140,7 @@ text = "Retry"
 
 [node name="main_menu_btn" type="Button" parent="Win_control/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 text = "Main Menu
 "
 
@@ -176,38 +170,25 @@ offset_right = 68.0
 offset_bottom = 23.0
 text = "00"
 
-[node name="GemNumber" type="Panel" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -91.0
-offset_top = 13.0
-offset_right = -51.0
-offset_bottom = 53.0
-grow_horizontal = 0
-script = ExtResource("3_cr2l5")
-
-[node name="GemCounter" type="Label" parent="GemNumber"]
-layout_mode = 1
+[node name="GemCounter" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -17.0
-offset_top = -14.0
-offset_right = 17.0
-offset_bottom = 14.0
+offset_left = 488.0
+offset_top = -305.0
+offset_right = 522.0
+offset_bottom = -277.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "0
-"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = SubResource("GDScript_g14c6")
+script = ExtResource("3_3tek8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GemNumber"]
-position = Vector2(67, 18)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1128, 31)
 scale = Vector2(3.34375, 3.25)
 sprite_frames = SubResource("SpriteFrames_cwcmu")
 autoplay = "default"
@@ -216,3 +197,4 @@ autoplay = "default"
 [connection signal="pressed" from="Fail_control/Death/VBoxContainer/btn_Main_menu" to="." method="_on_btn_main_menu_pressed"]
 [connection signal="pressed" from="Win_control/PanelContainer/VBoxContainer/retry_btn" to="." method="_on_retry_btn_pressed"]
 [connection signal="pressed" from="Win_control/PanelContainer/VBoxContainer/main_menu_btn" to="." method="_on_main_menu_btn_pressed"]
+[connection signal="mouse_entered" from="GemCounter" to="." method="_on_gem_counter_mouse_entered"]

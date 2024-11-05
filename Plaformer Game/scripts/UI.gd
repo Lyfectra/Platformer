@@ -3,17 +3,18 @@ extends CanvasLayer
 @onready var Fail_control = $Fail_control
 @onready var gem_counter = $GemControl/GemCounter
 @onready var win_control = $Win_control
+#Variables for the time, content to collect data from the text file and a gem counter
 var seconds = 0
 var minutes = 0
 var msecs = 0
 var finalTime = 0
 var content = ""
-#var counter = 0
-#creates a variable that is equal to the gems_collected function that is in the gem singleton
-var gems_collected = Gem.gems_collected
+var gems = 0
+var game_started = false
 
+#when the scene loads it sets the gem count to 0 and calls the read_file function
 func _ready():
-	Gem.add_gem.connect(update_gem_counter)
+	Ui.gems = 0
 	read_file()
 
 #when the retry button is pressed it reloads the current scene
@@ -34,22 +35,24 @@ func _on_kill_zone_body_entered(body):
 	Fail_control.visible = true
 
 func read_file():
+	#creates a variable that takes and holds the data from the text file
 	var txt_file = FileAccess.open("user://GameScores.dat", FileAccess.READ)
+	#Sets the content variable to the data and sets it to text
 	Ui.content = txt_file.get_as_text()
+	#returns the data collected from the text file
 	return content
 
 func read_write_to_file():
+	#creates a variable that accesses the text file that will read it and write to it
 	var file = FileAccess.open("user://GameScores.dat", FileAccess.READ_WRITE)
+	#built in function that looks for the end of the file before it writes to it
 	file.seek_end()
-	file.store_string(MainUi.username + " " + str(finalTime) + "\n")
+	#writes the username and the final time into the text file
+	file.store_string("Name: " + MainUi.username + " " + "Time: " + str(finalTime) + "\n")
 
-#func picked_up():
-	#counter += 1
-	#print("+1 Gem")
-
-func update_gem_counter():
-	gems_collected = Gem.gems_collected
-	$GemCounter.text = str(gems_collected)
+#function that adds one to a variable and prints "+1 Gem" each time it is called
+func gem_picked_up():
+	Ui.gems += 1
 	print("+1 Gem")
 
 #when the win Area2d is entered by the player this function is called
@@ -58,9 +61,12 @@ func _on_win_body_entered(body):
 		get_tree().paused = true
 		#makes the win_control body visible
 		win_control.visible = true
+		#sets the finalTime variable to all the combined time aspects (minutes, seconds and milliseconds)
 		finalTime = (str(Ui.minutes) + str(Ui.seconds) + str(Ui.msecs))
+		#calls the read_write function
 		read_write_to_file()
-		print(MainUi.username + " " + finalTime)
+		#prints out the username and the final time
+		print(MainUi.username + " Time -> " +  finalTime)
 
 #when the retry button is pressed it relo;ads the current scene
 func _on_retry_btn_pressed():

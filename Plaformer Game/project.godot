@@ -21,7 +21,7 @@ Gem="*res://Singletons/Gem.gd"
 Ui="*res://scripts/UI.gd"
 MainUi="*res://scripts/MainUI.gd"
 Leaderboard="*res://scripts/leaderboard.gd"
-GemCounter="*res://scenes/GemCounter.gd"
+GemCounter="*res://scripts/GemCounter.gd"
 
 [input]
 

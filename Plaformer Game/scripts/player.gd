@@ -55,7 +55,7 @@ func _physics_process(delta):
 	#If no other animation can play, then play the jump animation
 	else:
 		sprite.play("Jump")
-	
+	#if direction is activated then it will move the player and if it hasnt nothing will happen
 	if direction:
 		velocity.x = direction * SPEED
 	else:
